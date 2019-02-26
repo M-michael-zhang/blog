@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static',filename= 'css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename= 'css/search.css') }}">
+{% endblock %}
+
+{% block main %}
+    <div class="form-container">
+        <div class="form-group">
+            <a href="{{ url_for('subject') }}">
+                <button class="btn btn-primary  btn-lg active" style="margin-right:20px;">Create a New Subject</button>
+            </a>
+            <a href="{{ url_for('newArticle') }}">
+                <button class="btn btn-info  btn-lg active">Publish a New Article</button>
+            </a>
+        </div>
+        <ul class="article_content"
+
+        </ul>
+    </div>
+
+    <script>
+        $.ajax({
+            type: "GET",
+            url: "http://127.0.0.1:5000/getArticles",
+            processData: false,
+            contentType: false,
+            success: function (data) {
+
+                var num = data.length < 5 ? data.length : 5;
+                for (var i = data.length - 1; i >= data.length - 6; i--) {
+                    var myauthor = yc(data[i].author);
+                    $(".article_content").append("<li id=\"" + data[i].id + "\">\n" +
+                        "                <p class=\"title\">" + data[i].title + "</a></p>\n" +
+                        "                <p class=\"abstract\">\n" +
+                        data[i].content +
+                        "                <div class=\"info\">\n" +
+                        "                    <span class=\"author\" style=\"margin-right: 10px\">" + myauthor + "</span>\n" +
+                        "                    <span classl=\"time\" style=\"margin-right: 0px\">" + data[i].time + "</span>\n" +
+                        "                </div>\n" +
+                        "            </li>");
+
+                }
+            },
+            error: function (e) {
+
+            }
+
+        });
+
+        function yc(phone) {
+            var myphone = phone.split('@');
+            var number = myphone[0];
+            length = number.length;
+            number = number.substring(0, length / 2);
+            var s = "";
+            for (var i = 0; i < length / 2; i++) {
+                s += "*";
+            }
+            number = number + s + '@' + myphone[1];
+            return number;
+        }
+
+    </script>
+{% endblock %}
+

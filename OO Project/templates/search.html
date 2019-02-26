@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+
+{% block title %}Search{% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static',filename= 'css/search.css') }}">
+{% endblock %}
+
+{% block main %}
+      <br>
+    <div class="search-container">
+        <ul class="article_content">
+        </ul>
+    </div>
+    <script>
+    var search_item1 = localStorage.getItem("search_item");
+    if(search_item1==null) window.location.href="{{ url_for('main') }}"
+
+    $.ajax({
+             type: "GET",
+             url: "http://127.0.0.1:5000/getArticlesByAuthor",
+           data:{author:search_item1},
+             success: function(data){
+                 $(".article_content").append("<li class=\"author_result myli\">Search result fot the author which is  "+search_item1+" </li>")
+                        if(data!="") {
+                              for(var i=data.length-1;i>=0;i--){
+
+                           $(".article_content").append("<li id=\""+data[i].id+"\">\n" +
+                           "                <p class=\"title\"> "+data[i].title+"</a></p>\n" +
+                           "                <p class=\"abstract\">\n" +
+                               data[i].content+
+                           "                <div class=\"info\">\n" +
+                           "                    <span class=\"author\" style=\"margin-right: 10px\">"+data[i].author+"</span>\n" +
+                           "                    <span classl=\"time\" style=\"margin-right: 0px\">"+data[i].time+"</span>\n" +
+                           "                </div>\n" +
+                           "            </li>");
+
+                       }
+
+                        }
+                        else{
+
+                            $(".article_content").append("     there is no author about  "+search_item1);
+                        }
+                      },
+            error: function (e) {
+                 $(".article_content").append("<li class=\"author_result myli\">Search result fot the author which is "+search_item1+"  </li>")
+            }
+         });
+    $.ajax({
+             type: "GET",
+             url: "http://127.0.0.1:5000/getArticlesByTitle",
+           data:{title:search_item1},
+             success: function(data){
+                      $(".article_content").append("<li class=\"author_result myli\"> Search result fot the title which is "+search_item1+"  </li>")
+
+                        if(data!="") {
+                              for(var i=data.length-1;i>=0;i--){
+
+                           $(".article_content").append("<li id=\""+data[i].id+"\">\n" +
+                           "                <p class=\"title\"> "+data[i].title+"</a></p>\n" +
+                           "                <p class=\"abstract\">\n" +
+                               data[i].content+
+                           "                <div class=\"info\">\n" +
+                           "                    <span class=\"author\" style=\"margin-right: 10px\">"+data[i].author+"</span>\n" +
+                           "                    <span classl=\"time\" style=\"margin-right: 0px\">"+data[i].time+"</span>\n" +
+                           "                </div>\n" +
+                           "            </li>");
+
+                       }
+
+                        }
+                        else{
+
+                            $(".article_content").append("     there is no title about  "+search_item1);
+                        }
+                      },
+            error: function (e) {
+            $(".article_content").append("<li class=\"author_result myli\">Search result fot the title which is  "+search_item1+" </li>")
+            }
+         });
+    localStorage.removeItem('search_item');
+    </script>
+{% endblock %}

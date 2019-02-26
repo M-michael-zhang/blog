@@ -1,0 +1,127 @@
+{% extends 'base.html' %}
+
+{% block title %}Article{% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static',filename= 'css/search.css') }}">
+{% endblock %}
+
+{% block main %}
+    <br>
+
+    <div class="form-group" style="margin-left: 5%">
+        <label for="general-subject">General Subject: </label>
+        <select class="form-control" id="gselected" style="width: 80%">
+            <option class="gs" gid="1">Physical Sciences</option>
+            <option class="gs" gid="2">Social Sciences</option>
+            <option class="gs" gid="3">Biological Sciences</option>
+            <option class="gs" gid="4">Computer Sciences</option>
+            <option class="gs" gid="5">Statistics</option>
+            <option class="gs" gid="6">Mathematics</option>
+            <option class="gs" gid="7">Medical Sciences</option>
+        </select>
+    </div>
+
+    <div class="form-group" style="margin-left: 5%">
+        <label for="general-subject">Special Subject: </label>
+        <select class="form-control" id="sselected" style="width: 80%">
+            <option>please choose a general subject</option>
+        </select>
+    </div>
+    <div class="search-container">
+
+        <ul class="article_content">
+        </ul>
+    </div>
+    <script>
+        var gid;
+        var sid;
+        var flag = 0;
+        gid = $("option:selected", "#gselected").attr("gid");
+        $.ajax({
+            type: "GET",
+            url: "http://127.0.0.1:5000/getSubjectsByGS",
+            data: {gsid: gid},
+            success: function (data) {
+                $("#sselected").html("")
+                for (var i = 0; i < data.length; i++) {
+                    $("#sselected").append("<option sid=\"" + data[i].sid + "\">" + data[i].sname + "</option>")
+                }
+                flag = 1;
+            },
+            error: function (e) {
+
+            }
+        });
+        $("#gselected").on("change", function () {
+            gid = $("option:selected", this).attr("gid");
+            $.ajax({
+                type: "GET",
+                url: "http://127.0.0.1:5000/getSubjectsByGS",
+                data: {gsid: gid},
+                success: function (data) {
+                    $("#sselected").html("")
+                    for (var i = 0; i < data.length; i++) {
+                        $("#sselected").append("<option sid=\"" + data[i].sid + "\">" + data[i].sname + "</option>")
+                    }
+                    flag = 1;
+                },
+                error: function (e) {
+
+                }
+            });
+            sid = $("option:selected", "#sselected").attr("sid");
+            getArticleBySid(sid)
+        });
+
+        $("#sselected").on("change", function () {
+            sid = $("option:selected", this).attr("sid");
+            getArticleBySid(sid)
+
+        });
+
+        function getArticleBySid(id) {
+            ;
+            $(".article_content").html("")
+            $.ajax({
+                type: "GET",
+                url: "http://127.0.0.1:5000/getArticlesBySubject",
+                data: {subject: id},
+                success: function (data) {
+                    for (var i = data.length-1; i >=0 ; i--) {
+                        var myauthor = yc(data[i].author)
+                        $(".article_content").append("<li id=\"" + data[i].id + "\">\n" +
+                            "                <p class=\"title\"> " + data[i].title + "</a></p>\n" +
+                            "                <p class=\"abstract\">\n" +
+                            data[i].content +
+                            "                <div class=\"info\">\n" +
+                            "                    <span class=\"author\" style=\"margin-right: 10px\">" + myauthor + "</span>\n" +
+                            "                    <span classl=\"time\" style=\"margin-right: 0px\">" + data[i].time + "</span>\n" +
+                            "                </div>\n" +
+                            "            </li>");
+
+                    }
+                },
+                error: function (e) {
+
+                }
+
+            });
+        }
+
+        function yc(phone) {
+            var myphone = phone.split('@');
+            var number = myphone[0];
+            length = number.length;
+            number = number.substring(0, length / 2);
+            var s = "";
+            for (var i = 0; i < length / 2; i++) {
+                s += "*";
+            }
+            number = number + s + '@' + myphone[1];
+            return number;
+        }
+
+    </script>
+
+{% endblock %}

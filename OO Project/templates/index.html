@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../static/jquery.min.js"></script>
+</head>
+<body>
+<p id="test">asdsa</p>
+<form id="myf" style="float: left;width: 150px">
+        <input type="file" name="articlePDF" id="InputFile" />
+             <input type="text" value="1" name="index" id="index" style="display: none"/>
+            <p class="help-block">please choose a txt file.</p>
+        </form>
+    <button class="btn1 btn btn-info" >go</button>
+</body>
+<script>
+$(".btn1").click(function () {
+    alert("choose");
+    var formData = new FormData($('#myf')[0]);
+    $.ajax({
+        type: "post",
+        url: "http://127.0.0.1:5000/upload",
+        data: formData,
+        processData: false,
+        contentType: false,
+        success: function (data) {
+            alert(data);
+        },
+        error: function (e) {
+
+        }
+
+    });
+})
+    $.ajax({
+             type: "GET",
+             url: "http://127.0.0.1:5000/getArticles",
+             processData: false,
+            contentType: false,
+             success: function(data){
+                        alert(data);
+                       $("#test").html(data[0].author);
+                      },
+            error: function (e) {
+
+            }
+
+         });
+
+       $.ajax({
+             type: "GET",
+             url: "http://127.0.0.1:5000/addArticles",
+           data:{subject:"1",title:"T3",author:"michael",content:"ssscontent"},
+             success: function(data){
+                        alert(data);
+                      },
+            error: function (e) {
+
+            }
+
+         });
+</script>
+</html>

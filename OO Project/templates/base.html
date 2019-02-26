@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}-HL</title>
+    <title>MainPage</title>
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{{ url_for('static',filename= 'css/base.css') }}">
+    {% block head %}{% endblock %}
+
+</head>
+<body>
+<nav class="navbar navbar-default">
+    <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">
+                <img class="logo" src="{{ url_for('static',filename='image/LOGO.png') }}" alt="">
+            </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li class="active">
+                    <a href="{{ url_for('main') }}">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li>
+                    <a href="{{ url_for('article') }}">Article </a>
+                </li>
+                <li>
+                    <a href="{{ url_for('subject') }}">Subject </a>
+                </li>
+                <li>
+                    <a href="{{ url_for('donation') }}">Donation</a>
+                </li>
+            </ul>
+       <div  class="navbar-form navbar-left">
+
+                <div class="form-group">
+                    <input id="search_item" type="text" class="form-control"  placeholder="Search...">
+                </div>
+                    <button id="go_search"   class="btn btn-default">Search</button>
+
+
+       </div>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="{{ url_for('about') }}">About</a></li>
+
+            </ul><!-- /.navbar-collapse -->
+        </div>
+    </div><!-- /.container-fluid -->
+</nav>
+<div class="main">
+    {% block main %}{% endblock %}
+</div>
+
+
+</body>
+<script>
+
+
+    $("#go_search").click(function () {
+        var search_item = $("#search_item").val();
+
+        if(search_item!=""){
+            localStorage.setItem("search_item",search_item)
+            window.location.href="{{ url_for('search') }}"
+        }
+        else {
+            alert("please input the search condition")
+        }
+    })
+
+    $(".article_content").on("click","li",function () {
+         localStorage.setItem("article_id",this.id)
+        window.location.href="{{ url_for('detail') }}";
+    })
+function valid_clear(str) {
+    if(str.indexOf("shit")==-1&&str.indexOf("fuck")==-1){
+        return true;
+    }
+    else {
+        alert("something bad in your words");
+        return false;
+    }
+}
+</script>
+</html>

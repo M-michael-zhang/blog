@@ -1,0 +1,6 @@
+http://localhost:8080/User/add?userName=a&userPassword=aa&userId=5 添加用户
+http://localhost:8080/Message/add?MsgCont=aa&MsgSender=12添加信息
+http://localhost:8080/User/delete?userId=5 删除用户
+http://localhost:8080/Message/delete?MsgId=5 删除信息
+http://localhost:8080/Message/getAll查询所有信息
+http://localhost:8080/User/login/userName=a&password=b 用户登陆
