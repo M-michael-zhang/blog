@@ -7,16 +7,17 @@ from sqlalchemy import and_, create_engine
 import random
 import string
 
+
 from Model.Model import Article, Subject, GeneralSubject, Comment, InnerComment, Liked, Disliked
 
 app = Flask(__name__)
-app.config["SQLALCHEMY_DATABASE_URI"] = "mysql://root:root@123.207.233.171:3306/Huang"
+app.config["SQLALCHEMY_DATABASE_URI"] = "mysql://root:root@123.207.233.171:3306/blog"
 app.config['SQLALCHEMY_COMMIT_ON_TEARDOWN'] = True
 app.config['SQLALCHEMY_POOL_SIZE']=100
 app.config['SQLALCHEMY_MAX_OVERFLOW']=20
 
 db = SQLAlchemy(app)
-# db = create_engine("mysql://root:root@123.207.233.171:3306/Huang", pool_size=100, max_overflow=20)
+# db = create_engine("mysql://root:root@123.207.233.171:3306/blog", pool_size=100, max_overflow=20)
 
 
 @app.route('/')
@@ -105,7 +106,7 @@ def delArticlesById():
     return jsonify("The article which id is " +id+ " has been deleted successfully!"),200
 
 
-# subects操作
+# subects operation
 
 @app.route('/getSubjects')
 def getSubjects():
@@ -277,7 +278,7 @@ def addDisliked():
     db.session.add(a)
     db.session.commit()
     return "disliked it successfully!"
-#file上传下载
+#file upload and download
 @app.route('/upload',methods=['GET', 'POST'])
 def upload():
     fs = request.files["articlePDF"]
@@ -286,7 +287,7 @@ def upload():
     fs.save(os.path.join("static/document", name))
     return name
 
-#页面跳转
+#forward page
 
 @app.route('/subject/')
 def subject():
