@@ -55,10 +55,9 @@
                 </div>
                     <button id="go_search"   class="btn btn-default">Search</button>
 
-
        </div>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="{{ url_for('about') }}">About</a></li>
+                <li><a href="#">About</a></li>
 
             </ul><!-- /.navbar-collapse -->
         </div>
@@ -89,14 +88,6 @@
          localStorage.setItem("article_id",this.id)
         window.location.href="{{ url_for('detail') }}";
     })
-function valid_clear(str) {
-    if(str.indexOf("shit")==-1&&str.indexOf("fuck")==-1){
-        return true;
-    }
-    else {
-        alert("something bad in your words");
-        return false;
-    }
-}
+
 </script>
 </html>

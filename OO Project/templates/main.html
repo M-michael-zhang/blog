@@ -17,53 +17,56 @@
                 <button class="btn btn-info  btn-lg active">Publish a New Article</button>
             </a>
         </div>
-        <ul class="article_content"
+        <ul class="article_content">
+{#            <li>#}
+{#                <p class="title"><a href="{{ url_for('detail') }}"> title</a></p>#}
+{#                <p class="abstract">#}
+{#                    1. Add a new comment to an article.#}
+{#                    2. Upvote this comment from IP address 1. Now the number of upvotes must be 1.#}
+{#                    3. Upvote this comment from IP address 2. Now the number of upvotes must be 2.#}
+{#                    Repeat steps 2 and 3 multiple times. Each time the number of upvotes must remain unchanged.#}
+{#                    Refresh the article page, the number of upvotes for the new comment must be 2.#}
+{##}
+{#                    Upvote must also work for existing comments.</p>#}
+{##}
+{#                <div class="info">#}
+{#                    <span class="author" style="margin-right: 10px">author</span>#}
+{#                    <span classl="time" style="margin-right: 0px">time</span>#}
+{#                </div>#}
+{#            </li>#}
 
         </ul>
     </div>
 
     <script>
         $.ajax({
-            type: "GET",
-            url: "http://127.0.0.1:5000/getArticles",
-            processData: false,
+             type: "GET",
+             url: "http://127.0.0.1:5000/getArticles",
+             processData: false,
             contentType: false,
-            success: function (data) {
+             success: function(data){
+                        var num = data.length<5?data.length:5;
+                       for(var i=data.length-1;i>=data.length-6;i--){
+                           $(".article_content").append("<li id=\""+data[i].id+"\">\n" +
+                           "                <p class=\"title\">"+data[i].title+"</a></p>\n" +
+                           "                <p class=\"abstract\">\n" +
+                               data[i].content+
+                           "                <div class=\"info\">\n" +
+                           "                    <span class=\"author\" style=\"margin-right: 10px\">"+data[i].author+"</span>\n" +
+                           "                    <span classl=\"time\" style=\"margin-right: 0px\">"+data[i].time+"</span>\n" +
+                           "                </div>\n" +
+                           "            </li>");
 
-                var num = data.length < 5 ? data.length : 5;
-                for (var i = data.length - 1; i >= data.length - 6; i--) {
-                    var myauthor = yc(data[i].author);
-                    $(".article_content").append("<li id=\"" + data[i].id + "\">\n" +
-                        "                <p class=\"title\">" + data[i].title + "</a></p>\n" +
-                        "                <p class=\"abstract\">\n" +
-                        data[i].content +
-                        "                <div class=\"info\">\n" +
-                        "                    <span class=\"author\" style=\"margin-right: 10px\">" + myauthor + "</span>\n" +
-                        "                    <span classl=\"time\" style=\"margin-right: 0px\">" + data[i].time + "</span>\n" +
-                        "                </div>\n" +
-                        "            </li>");
-
-                }
-            },
+                       }
+             },
             error: function (e) {
 
             }
 
-        });
+         });
 
-        function yc(phone) {
-            var myphone = phone.split('@');
-            var number = myphone[0];
-            length = number.length;
-            number = number.substring(0, length / 2);
-            var s = "";
-            for (var i = 0; i < length / 2; i++) {
-                s += "*";
-            }
-            number = number + s + '@' + myphone[1];
-            return number;
-        }
 
-    </script>
+
+</script>
 {% endblock %}
 

@@ -3,7 +3,7 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
-app.config["SQLALCHEMY_DATABASE_URI"] = "mysql://root:root@123.207.233.171:3306/Huang"
+app.config["SQLALCHEMY_DATABASE_URI"] = "mysql://root:root@123.207.233.171:3306/blogs"
 app.config['SQLALCHEMY_COMMIT_ON_TEARDOWN'] = True
 db = SQLAlchemy(app)
 
@@ -65,10 +65,10 @@ class Subject(db.Model):
 
 class GeneralSubject(db.Model):
     __tablename__ = "generalSubject"
-    gid = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.Integer, unique=True)
     def __repr__(self):
-        return "article: %s %s " % (self.gid, self.name)
+        return "article: %s %s " % (self.id, self.name)
 
     def to_json(self):
         dict = self.__dict__
@@ -76,8 +76,8 @@ class GeneralSubject(db.Model):
             del dict["_sa_instance_state"]
         return dict
 
-    def __init__(self, gid, name):
-        self.gid = gid
+    def __init__(self, id, name):
+        self.id = id
         self.name = name
 
 

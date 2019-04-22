@@ -1,23 +1,23 @@
 import datetime
 import json
 import os
+
 from flask import Flask, jsonify, render_template, request
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import and_, create_engine
 import random
 import string
 
-
 from Model.Model import Article, Subject, GeneralSubject, Comment, InnerComment, Liked, Disliked
 
 app = Flask(__name__)
-app.config["SQLALCHEMY_DATABASE_URI"] = "mysql://root:root@123.207.233.171:3306/blog"
+app.config["SQLALCHEMY_DATABASE_URI"] = "mysql://root:root@123.207.233.171:3306/blogs"
 app.config['SQLALCHEMY_COMMIT_ON_TEARDOWN'] = True
 app.config['SQLALCHEMY_POOL_SIZE']=100
 app.config['SQLALCHEMY_MAX_OVERFLOW']=20
 
 db = SQLAlchemy(app)
-# db = create_engine("mysql://root:root@123.207.233.171:3306/blog", pool_size=100, max_overflow=20)
+# db = create_engine("mysql://root:root@123.207.233.171:3306/Huang", pool_size=100, max_overflow=20)
 
 
 @app.route('/')
@@ -51,10 +51,9 @@ def addArticles():
     filename = request.args.get("filename")
     time = datetime.datetime.now()
     a =Article(None, subject,title, author, content, time,filename)
-
     db.session.add(a)
     db.session.commit()
-    return "Publish Successfully!"
+    return "Successful insertion"
 
 @app.route('/getArticlesById')
 def getArticlesById():
@@ -97,16 +96,8 @@ def getArticlesBySubject():
         result.append(article.to_json())
     return jsonify(result), 200
 
-@app.route('/delArticlesById')
-def delArticlesById():
-    id = request.args.get("id")
-    articles = db.session.query(Article).filter(Article.id == id).all()
-    db.session.delete(articles[0])
-    db.session.commit()
-    return jsonify("The article which id is " +id+ " has been deleted successfully!"),200
 
-
-# subects operation
+# subects操作
 
 @app.route('/getSubjects')
 def getSubjects():
@@ -115,7 +106,6 @@ def getSubjects():
     for article in articles:
         result.append(article.to_json())
     return jsonify(result), 200
-
 
 @app.route('/getSubjectsById')
 def getSubjectsById():
@@ -144,28 +134,10 @@ def addSubject():
     db.session.commit()
     return "Successful insertion"
 
-@app.route('/isSameSubject')
-def isSameSubject():
-    sname = request.args.get("sname")
-    subject = Subject.query.filter(Subject.sname == sname).all()
-    if not subject:
-        return jsonify(0)
-    else:
-        return jsonify(1)
-
 #general subject
 @app.route('/getGeneralSubjects')
 def getGeneralSubjects():
     articles = GeneralSubject.query.all()
-    result = []
-    for article in articles:
-        result.append(article.to_json())
-    return jsonify(result), 200
-
-@app.route('/getGeneralSubjectById')
-def getGeneralSubjectById():
-    gid = request.args.get("gid")
-    articles = GeneralSubject.query.filter(GeneralSubject.gid == gid).all()
     result = []
     for article in articles:
         result.append(article.to_json())
@@ -191,15 +163,8 @@ def addComment():
     a =Comment(None, aid, reader,  content, time)
     db.session.add(a)
     db.session.commit()
-    return "Comment Successfully!"
+    return "Successful insertion"
 
-@app.route('/delCommentById')
-def delCommentById():
-    cid = request.args.get("cid")
-    articles = db.session.query(Comment).filter(Comment.cid == cid).all()
-    db.session.delete(articles[0])
-    db.session.commit()
-    return jsonify("The comment which id is " + cid + " has been deleted successfully!"), 200
 #inner comment
 @app.route('/getInnerCommentByCid')
 def getInnerCommentByCid    ():
@@ -249,7 +214,7 @@ def addLiked():
     a = Liked(None, aid, reader)
     db.session.add(a)
     db.session.commit()
-    return "liked it successfully!"
+    return "liked it success!"
 
 @app.route('/getCountDislikedByAid')
 def getCountDislikedByAid():
@@ -277,8 +242,8 @@ def addDisliked():
     a = Disliked(None, aid, reader)
     db.session.add(a)
     db.session.commit()
-    return "disliked it successfully!"
-#file upload and download
+    return "disliked it success!"
+#file上传下载
 @app.route('/upload',methods=['GET', 'POST'])
 def upload():
     fs = request.files["articlePDF"]
@@ -287,7 +252,7 @@ def upload():
     fs.save(os.path.join("static/document", name))
     return name
 
-#forward page
+#页面跳转
 
 @app.route('/subject/')
 def subject():
@@ -328,12 +293,5 @@ def search():
 def detail():
     if request.method == 'GET':
         return render_template('detail.html')
-    else:
-        pass
-
-@app.route('/about/')
-def about():
-    if request.method == 'GET':
-        return render_template('about.html')
     else:
         pass

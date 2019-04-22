@@ -1,20 +1,5 @@
-
-.subject{
-    width:312px;
-    height:220px;
-}
-
-.photo-container{
-    margin-top: 40px;
-    width: 100%;
-    height:220px;
-}
-
-.photo-group{
-    width: 50%;
-    height: 100%;
-    float: left;
-    text-align: center;
-    display: table-cell;
-    vertical-align: middle;
+.form-group{
+    margin:0 auto;
+    width:550px;
+    text-align: left;
 }

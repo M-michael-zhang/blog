@@ -3,100 +3,50 @@
 {% block title %}Subject{% endblock %}
 {% block head %}
 
-    <link rel="stylesheet" href="{{ url_for('static',filename= 'css/subject.css') }}">
 {% endblock %}
 
 {% block main %}
 
-    <div class="form-inline" style="text-align: center;">
-        <div style="width: 40%;float: left;">
-            <label for="general-subject">General Subject: </label>
-            <select class="form-control" id="gselected">
-                <option class="gs" gid="1">Physical Sciences</option>
-                <option class="gs" gid="2">Social Sciences</option>
-                <option class="gs" gid="3">Biological Sciences</option>
-                <option class="gs" gid="4">Computer Sciences</option>
-                <option class="gs" gid="5">Statistics</option>
-                <option class="gs" gid="6">Mathematics</option>
-                <option class="gs" gid="7">Medical Sciences</option>
-            </select>
+        <div class="form-inline" style="text-align: center">
+            <div class="form-group">
+                <label for="general-subject">General Subject: </label>
+                <select class="form-control" id="gselected">
+                    <option class="gs" gid="1">Physical Sciences</option>
+                    <option class="gs" gid="2">Social Sciences</option>
+                    <option class="gs" gid="3">Biological Sciences</option>
+                    <option class="gs" gid="4">Computer Sciences</option>
+                    <option  class="gs" gid="5">Statistics</option>
+                    <option class="gs" gid="6">Mathematics</option>
+                    <option class="gs" gid="7">Medical ScSciences</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="special-subject">Special Subject:</label>
+                <input id="sub_content" type="special-subject" class="form-control" placeholder="Special Subject...">
+            </div>
+            <button id="add_btn" class="btn btn-default"> Create</button>
         </div>
-        <div style="width: 40%;float: left;">
-            <label for="special-subject">Special Subject:</label>
-            <input id="sub_content" type="special-subject" class="form-control" placeholder="Special Subject...">
-        </div>
-        <button id="add_btn" class="btn btn-default"> Create</button>
-    </div>
-    <br><br>
-    <div class="photos">
-        <div class="photo-container">
-            <div class="photo-group">
-                <img class="subject" src="{{ url_for('static',filename='image/physical.jpg') }}" alt="">
-            </div>
-            <div class="photo-group">
-                <img class="subject" src="{{ url_for('static',filename='image/social.jpg') }}" alt="">
-            </div>
-        </div>
-        <div class="photo-container">
-            <div class="photo-group">
-                <img class="subject" src="{{ url_for('static',filename='image/biological.jpg') }}" alt="">
-            </div>
-            <div class="photo-group">
-                <img class="subject" src="{{ url_for('static',filename='image/computer.jpg') }}" alt="">
-            </div>
-        </div>
-        <div class="photo-container">
-            <div class="photo-group">
-                <img class="subject" src="{{ url_for('static',filename='image/statistics.jpg') }}" alt="">
-            </div>
-            <div class="photo-group">
-                <img class="subject" src="{{ url_for('static',filename='image/mathematics.jpg') }}" alt="">
-            </div>
-        </div>
-    </div>
     <script>
-        var gid = 1;
-        $("#gselected").on("change", function () {
-            gid = $("option:selected", this).attr("gid");
-        });
-        $("#add_btn").click(function () {
-            var cont = $("#sub_content").val();
+    var gid=1;
+    $("#gselected").on("change",function() {
+        gid = $("option:selected", this).attr("gid");
+    });
+    $("#add_btn").click(function () {
+        var cont = $("#sub_content").val();
+               $.ajax({
+             type: "GET",
+             url: "http://127.0.0.1:5000/addSubject",
+           data:{gsid:gid,name:cont},
+             success: function(data){
+                        alert(data);
+                      },
+            error: function (e) {
 
-            if(valid_clear(cont)){
-                 $.ajax({
-                type: "GET",
-                url: "http://127.0.0.1:5000/isSameSubject",
-                data: {sname: cont},
-                success: function (data) {
-                    if(data==1){
-                        alert("there has been the same subject");
-                    }
-                    else{
-                        $.ajax({
-                        type: "GET",
-                        url: "http://127.0.0.1:5000/addSubject",
-                         data: {gsid: gid, name: cont},
-                         success: function (data) {
-                    alert(data);
-                     },
-                     error: function (e) {
-
-                      }
-
-            });
-                    }
-                },
-                error: function (e) {
-
-                }
-
-            });
             }
 
+         });
 
-
-        })
-
+    })
     </script>
 
 

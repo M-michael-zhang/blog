@@ -21,7 +21,7 @@
              url: "http://127.0.0.1:5000/getArticlesByAuthor",
            data:{author:search_item1},
              success: function(data){
-                 $(".article_content").append("<li class=\"author_result myli\">Search result fot the author which is  "+search_item1+" </li>")
+                 $(".article_content").append("<li class=\"author_result myli\">作者为  "+search_item1+"  的搜索结果</li>")
                         if(data!="") {
                               for(var i=data.length-1;i>=0;i--){
 
@@ -44,7 +44,7 @@
                         }
                       },
             error: function (e) {
-                 $(".article_content").append("<li class=\"author_result myli\">Search result fot the author which is "+search_item1+"  </li>")
+                 $(".article_content").append("<li class=\"author_result myli\">作者为  "+search_item1+"  的搜索结果</li>")
             }
          });
     $.ajax({
@@ -52,7 +52,7 @@
              url: "http://127.0.0.1:5000/getArticlesByTitle",
            data:{title:search_item1},
              success: function(data){
-                      $(".article_content").append("<li class=\"author_result myli\"> Search result fot the title which is "+search_item1+"  </li>")
+                      $(".article_content").append("<li class=\"author_result myli\">标题为  "+search_item1+"  的搜索结果</li>")
 
                         if(data!="") {
                               for(var i=data.length-1;i>=0;i--){
@@ -76,7 +76,7 @@
                         }
                       },
             error: function (e) {
-            $(".article_content").append("<li class=\"author_result myli\">Search result fot the title which is  "+search_item1+" </li>")
+            $(".article_content").append("<li class=\"author_result myli\">标题为  "+search_item1+"  的搜索结果</li>")
             }
          });
     localStorage.removeItem('search_item');
