@@ -27,7 +27,7 @@ def main():
 if __name__ == '__main__':
     app.run()
 
-@app.route('/getArticles')
+@app.route('/getArticles',methods=['GET', 'POST'])
 def getArticless():
     articles = Article.query.all()
     count = Article.query.count()
@@ -42,7 +42,7 @@ def getArticless():
     # dict['articles']=result
     return jsonify(result), 200
 
-@app.route('/addArticles')
+@app.route('/addArticles',methods=['GET', 'POST'])
 def addArticles():
     subject = request.args.get("subject")
     title = request.args.get("title")
@@ -55,7 +55,7 @@ def addArticles():
     db.session.commit()
     return "Successful insertion"
 
-@app.route('/getArticlesById')
+@app.route('/getArticlesById',methods=['GET', 'POST'])
 def getArticlesById():
     id = request.args.get("id")
     articles = Article.query.filter(Article.id == id).all()
@@ -65,7 +65,7 @@ def getArticlesById():
         result.append(article.to_json())
     return jsonify(result), 200
 
-@app.route('/getArticlesByTitle')
+@app.route('/getArticlesByTitle',methods=['GET', 'POST'])
 def getArticlesByTitle():
     title= request.args.get("title")
     articles = Article.query.filter(Article.title == title).all()
@@ -75,7 +75,7 @@ def getArticlesByTitle():
         result.append(article.to_json())
     return jsonify(result), 200
 
-@app.route('/getArticlesByAuthor')
+@app.route('/getArticlesByAuthor',methods=['GET', 'POST'])
 def getArticlesByAuthor():
     author = request.args.get("author")
     articles = Article.query.filter(Article.author == author).all()
@@ -86,7 +86,7 @@ def getArticlesByAuthor():
     return jsonify(result), 200
 
 
-@app.route('/getArticlesBySubject')
+@app.route('/getArticlesBySubject',methods=['GET', 'POST'])
 def getArticlesBySubject():
     subject = request.args.get("subject")
     articles = Article.query.filter(Article.subject == subject).all()
@@ -99,7 +99,7 @@ def getArticlesBySubject():
 
 # subects操作
 
-@app.route('/getSubjects')
+@app.route('/getSubjects',methods=['GET', 'POST'])
 def getSubjects():
     articles = Subject.query.all()
     result = []
@@ -107,7 +107,7 @@ def getSubjects():
         result.append(article.to_json())
     return jsonify(result), 200
 
-@app.route('/getSubjectsById')
+@app.route('/getSubjectsById',methods=['GET', 'POST'])
 def getSubjectsById():
     sid = request.args.get("sid")
     articles = Subject.query.filter(Subject.sid == sid).all()
@@ -116,7 +116,7 @@ def getSubjectsById():
         result.append(article.to_json())
     return jsonify(result), 200
 
-@app.route('/getSubjectsByGS')
+@app.route('/getSubjectsByGS',methods=['GET', 'POST'])
 def getSubjectsByGS():
     generalSubject = request.args.get("gsid")
     articles = Subject.query.filter(Subject.generalSubject == generalSubject).all()
@@ -125,7 +125,7 @@ def getSubjectsByGS():
         result.append(article.to_json())
     return jsonify(result), 200
 
-@app.route('/addSubject')
+@app.route('/addSubject',methods=['PUTTER'])
 def addSubject():
     gsid = request.args.get("gsid")
     name = request.args.get("name")
@@ -135,7 +135,7 @@ def addSubject():
     return "Successful insertion"
 
 #general subject
-@app.route('/getGeneralSubjects')
+@app.route('/getGeneralSubjects',methods=['GET', 'POST'])
 def getGeneralSubjects():
     articles = GeneralSubject.query.all()
     result = []
@@ -144,7 +144,7 @@ def getGeneralSubjects():
     return jsonify(result), 200
 
 #comment
-@app.route('/getCommentByArticle')
+@app.route('/getCommentByArticle',methods=['GET', 'POST'])
 def getCommentByArticle():
     aid = request.args.get("aid")
     articles = Comment.query.filter(Comment.aid == aid).all()
@@ -154,11 +154,12 @@ def getCommentByArticle():
         result.append(article.to_json())
     return jsonify(result), 200
 
-@app.route('/addComment')
+@app.route('/addComment',methods=['PUT'])
 def addComment():
     aid = request.args.get("aid")
     reader = request.args.get("reader")
     content = request.args.get("content")
+    print(content)
     time = datetime.datetime.now()
     a =Comment(None, aid, reader,  content, time)
     db.session.add(a)
@@ -166,7 +167,7 @@ def addComment():
     return "Successful insertion"
 
 #inner comment
-@app.route('/getInnerCommentByCid')
+@app.route('/getInnerCommentByCid',methods=['GET', 'POST'])
 def getInnerCommentByCid    ():
     cid = request.args.get("cid")
     articles = Comment.query.filter(Comment.cid == cid).all()
@@ -176,7 +177,7 @@ def getInnerCommentByCid    ():
         result.append(article.to_json())
     return jsonify(result), 200
 
-@app.route('/addInnerComment')
+@app.route('/addInnerComment',methods=['PUT'])
 def addInnerComment():
     cid = request.args.get("cid")
     reader = request.args.get("reader")
@@ -188,7 +189,7 @@ def addInnerComment():
     return "Successful insertion"
 
 #liked
-@app.route('/getCountLikedByAid')
+@app.route('/getCountLikedByAid',methods=['GET', 'POST'])
 def getCountLikedByAid():
     aid = request.args.get("aid")
     data = Liked.query.filter(Liked.aid == aid).all()
@@ -197,7 +198,7 @@ def getCountLikedByAid():
         count=count+1
     return jsonify(count), 200
 
-@app.route('/getIsLiked')
+@app.route('/getIsLiked',methods=['GET', 'POST'])
 def getIsLiked():
     aid = request.args.get("aid")
     reader = request.args.get("reader")
@@ -207,7 +208,7 @@ def getIsLiked():
         count=count+1
     return jsonify(count), 200
 
-@app.route('/addLiked')
+@app.route('/addLiked',methods=['GET', 'POST'])
 def addLiked():
     aid = request.args.get("aid")
     reader = request.args.get("reader")
@@ -216,7 +217,7 @@ def addLiked():
     db.session.commit()
     return "liked it success!"
 
-@app.route('/getCountDislikedByAid')
+@app.route('/getCountDislikedByAid',methods=['GET', 'POST'])
 def getCountDislikedByAid():
     aid = request.args.get("aid")
     data = Disliked.query.filter(Disliked.aid == aid).all()
@@ -225,7 +226,7 @@ def getCountDislikedByAid():
         count=count+1
     return jsonify(count), 200
 
-@app.route('/getIsDisliked')
+@app.route('/getIsDisliked',methods=['GET', 'POST'])
 def getIsDisliked():
     aid = request.args.get("aid")
     reader = request.args.get("reader")
@@ -235,7 +236,7 @@ def getIsDisliked():
         count=count+1
     return jsonify(count), 200
 
-@app.route('/addDisliked')
+@app.route('/addDisliked',methods=['GET', 'POST'])
 def addDisliked():
     aid = request.args.get("aid")
     reader = request.args.get("reader")

@@ -149,7 +149,7 @@ class Liked(db.Model):
 
 class Disliked(db.Model):
     __tablename__ = "disliked"
-    dlikedid = db.Column(db.Integer, primary_key=True)
+    dislikedid = db.Column(db.Integer, primary_key=True)
     aid = db.Column(db.Integer, unique=True)
     reader = db.Column(db.Integer, unique=True)
     def __repr__(self):

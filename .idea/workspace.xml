@@ -3,36 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="14ef0fe1-7dc7-4fe6-b525-decbe1a8e109" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OO Project/Model/Model.py" beforeDir="false" afterPath="$PROJECT_DIR$/OO Project/Model/Model.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/OO Project/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/OO Project/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OO Project/static/document/2HEpaZ3JqUYsRy9.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OO Project/static/document/2qOlvHf0PI7EjeA.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OO Project/static/document/4jVvhno2atkZ5YS.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OO Project/static/document/560lPLDQXhygJbE.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OO Project/static/document/8TEp9e1KHlX0GoL.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OO Project/static/document/9Rm3kXaoiKpQBPA.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OO Project/static/document/AdZk7RGfmMB3wHz.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OO Project/static/document/HwB5ZFklYzJQgch.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OO Project/static/document/KgZPsS5RJ6vaHVe.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OO Project/static/document/LPV9it4kyAjBmgR.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OO Project/static/document/NZWU0ztdTDj4q1y.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OO Project/static/document/SP2TOdtf8C3herZ.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OO Project/static/document/Td2ulzKPgQn70Ur.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OO Project/static/document/UujDyJmVS8Yz7FP.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OO Project/static/document/UzvP4qL5kFjI0Wp.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OO Project/static/document/VwqJ8LPoa9glCXM.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OO Project/static/document/WegadHwtqfjKkms.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OO Project/static/document/Z2Vneq4F59sEHIC.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OO Project/static/document/a0jTV4W8U7lpmcG.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OO Project/static/document/pgdsT7QHJkrnYxj.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OO Project/static/document/qpcDAOBZWbleHES.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OO Project/static/document/quPV7bhfCDkr4ln.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OO Project/static/document/r9YLAoy7mFa6v0w.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OO Project/static/document/tpx5hc3uKo8WfEg.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OO Project/static/document/uGsjMhXv0qwA1tO.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OO Project/static/document/xYEeygI3nwicNaS.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OO Project/static/document/ziAOyuBNMXpYHev.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OO Project/templates/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/OO Project/templates/main.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OO Project/static/image/alipay.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/OO Project/static/image/alipay.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OO Project/static/image/weixin.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/OO Project/static/image/weixin.jpg" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -41,7 +14,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/blog$app.coverage" NAME="app Coverage Results" MODIFIED="1555929996573" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/OO Project" />
+    <SUITE FILE_PATH="coverage/blog$app.coverage" NAME="app Coverage Results" MODIFIED="1556590251188" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/OO Project" />
     <SUITE FILE_PATH="coverage/blog$Model.coverage" NAME="Model Coverage Results" MODIFIED="1555920922088" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/OO Project/Model" />
     <SUITE FILE_PATH="coverage/Final_OO_Project$Unnamed.coverage" NAME="Unnamed Coverage Results" MODIFIED="1547897323469" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
   </component>
@@ -50,13 +23,25 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/OO Project/app.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="209">
-              <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
+            <state relative-caret-position="-316">
+              <caret line="33" column="27" lean-forward="true" selection-start-line="33" selection-start-column="27" selection-end-line="33" selection-end-column="27" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
               </folding>
             </state>
           </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/OO Project/templates/donation.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-570" />
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/OO Project/static/image/alipay.jpg">
+          <provider selected="true" editor-type-id="images" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
@@ -78,15 +63,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="114">
               <caret line="6" column="20" selection-start-line="6" selection-start-column="20" selection-end-line="6" selection-end-column="20" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/OO Project/templates/test.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="3" selection-start-column="3" selection-end-column="11" />
             </state>
           </provider>
         </entry>
@@ -135,12 +111,12 @@
         <option value="$PROJECT_DIR$/../AppData/Local/Programs/Python/Python37/Lib/site-packages/flask_sqlalchemy/__init__.py" />
         <option value="$PROJECT_DIR$/OO Project/Model/Model.py" />
         <option value="$PROJECT_DIR$/OO Project/templates/main.html" />
-        <option value="$PROJECT_DIR$/OO Project/app.py" />
         <option value="$PROJECT_DIR$/OO Project/templates/test.html" />
+        <option value="$PROJECT_DIR$/OO Project/app.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="425" />
     <option name="width" value="950" />
     <option name="height" value="735" />
@@ -213,6 +189,11 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\paypome\blog\OO Project\static\image" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -305,22 +286,23 @@
       <workItem from="1555913370969" duration="116000" />
       <workItem from="1555913506740" duration="4994000" />
       <workItem from="1555921255913" duration="1413000" />
+      <workItem from="1556589799983" duration="500000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="11595000" />
+    <option name="totallyTimeSpent" value="12095000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="7" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26340482" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26675603" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3286119" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3286119" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3286119" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -365,9 +347,7 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/OO Project/static/image/biological.jpg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/OO Project/static/image/biological.jpg" />
     <entry file="file://$PROJECT_DIR$/../AppData/Local/Programs/Python/Python37/Lib/site-packages/flask/app.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="383">
@@ -375,16 +355,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/OO Project/app.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/OO Project/templates/test.html" />
     <entry file="file://$PROJECT_DIR$/OO Project/templates/newArticle.html">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -399,13 +370,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="114">
           <caret line="6" column="20" selection-start-line="6" selection-start-column="20" selection-end-line="6" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/OO Project/templates/test.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="3" selection-start-column="3" selection-end-column="11" />
         </state>
       </provider>
     </entry>
@@ -426,6 +390,24 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="14554">
           <caret line="788" column="50" selection-start-line="788" selection-start-column="50" selection-end-line="788" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OO Project/static/image/alipay.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OO Project/templates/donation.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-570" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OO Project/app.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-316">
+          <caret line="33" column="27" lean-forward="true" selection-start-line="33" selection-start-column="27" selection-end-line="33" selection-end-column="27" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
