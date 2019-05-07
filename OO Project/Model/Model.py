@@ -45,7 +45,7 @@ class Article(db.Model):
 class Subject(db.Model):
     __tablename__ = "subject"
     sid = db.Column(db.Integer, primary_key=True)
-    sname = db.Column(db.Integer, unique=True)
+    sname = db.Column(db.String, unique=True)
     generalSubject = db.Column(db.Integer,unique=True)
     def __repr__(self):
         return "article: %s %s %s" % (self.sid, self.sname, self.generalSubject)
@@ -66,7 +66,7 @@ class Subject(db.Model):
 class GeneralSubject(db.Model):
     __tablename__ = "generalSubject"
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.Integer, unique=True)
+    name = db.Column(db.String, unique=True)
     def __repr__(self):
         return "article: %s %s " % (self.id, self.name)
 
