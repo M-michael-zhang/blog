@@ -11,7 +11,7 @@ import string
 from Model.Model import Article, Subject, GeneralSubject, Comment, InnerComment, Liked, Disliked
 
 app = Flask(__name__)
-app.config["SQLALCHEMY_DATABASE_URI"] = "mysql://root:root@123.207.233.171:3306/blogs"
+app.config["SQLALCHEMY_DATABASE_URI"] = "mysql://root:paypome2016@123.207.233.171:3306/blogs"
 app.config['SQLALCHEMY_COMMIT_ON_TEARDOWN'] = True
 app.config['SQLALCHEMY_POOL_SIZE']=100
 app.config['SQLALCHEMY_MAX_OVERFLOW']=20
@@ -125,7 +125,7 @@ def getSubjectsByGS():
         result.append(article.to_json())
     return jsonify(result), 200
 
-@app.route('/addSubject',methods=['PUTTER'])
+@app.route('/addSubject',methods=['GET', 'POST'])
 def addSubject():
     gsid = request.args.get("gsid")
     name = request.args.get("name")
@@ -154,7 +154,7 @@ def getCommentByArticle():
         result.append(article.to_json())
     return jsonify(result), 200
 
-@app.route('/addComment',methods=['PUT'])
+@app.route('/addComment',methods=['GET', 'POST'])
 def addComment():
     aid = request.args.get("aid")
     reader = request.args.get("reader")
@@ -177,7 +177,7 @@ def getInnerCommentByCid    ():
         result.append(article.to_json())
     return jsonify(result), 200
 
-@app.route('/addInnerComment',methods=['PUT'])
+@app.route('/addInnerComment',methods=['GET', 'POST'])
 def addInnerComment():
     cid = request.args.get("cid")
     reader = request.args.get("reader")

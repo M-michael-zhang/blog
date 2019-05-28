@@ -48,6 +48,9 @@
     width: 100%;
     height: 70px;
 }
+.comment{
+    margin-bottom: 20px;
+}
 .comment_user{
     font-weight: bold;
     color: black;

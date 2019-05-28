@@ -34,7 +34,21 @@
         <div class="myli"><br><p>  User Comment</p></div>
   <hr>
         <div class="comments">
-
+{#<div class="comment">#}
+{#  <a href="###" class="avatar">#}
+{#    <i class="icon-user icon-2x"></i>#}
+{#  </a>#}
+{#  <div class="content">#}
+{#    <div class="pull-right text-muted">2 个小时前</div>#}
+{#    <div><a href="###"><strong>Catouse</strong></a> <span class="text-muted">评论</span></div>#}
+{#    <div class="text">你到底把我家钥匙放哪里了...</div>#}
+{#    <div class="actions">#}
+{#      <a href="##">回复</a>#}
+{#      <a href="##">编辑</a>#}
+{#      <a href="##">删除</a>#}
+{#    </div>#}
+{#  </div>#}
+{#</div>#}
 {#        <div class="comment_item">#}
 {#            <div class="comment_user">499887880@qq.com<span class="comment_time" style="float: right">2018.01.04 12:35</span><br></div>#}
 {#            <textarea class="comment_content" readonly="readonly" rows="3">asdasdasdasdd</textarea>#}
@@ -43,15 +57,13 @@
 
         </div>
         <hr>
-        <div class="myli"><br><p>  Send Comment</p></div>
-
+        <div class="myli"><br><p>Send Comment</p></div>
             <div class="form-group" style="margin-top: 20px;">
                 <input type="text" id="send_content" class="form-control" placeholder="Please enter your comment...">
             </div>
             <div class="form-group" style="text-align: right">
                 <button id="send_btn" class="btn btn-primary">Commit</button>
             </div>
-
     </div>
     <script>
     var article_id1 = localStorage.getItem("article_id");
@@ -138,12 +150,14 @@ $(".btn_liked").click(function () {
              success: function(data){
                 if(data!=""){
                     for(var i=0;i<data.length;i++){
-                       $(".comments").append("  <div class=\"comment_item\">\n" +
-                    "            <div class=\"comment_user\">"+data[i].reader+"<span class=\"comment_time\" style=\"float: right\">"+data[i].time+"</span><br></div>\n" +
-                    "            <div class=\"comment_content\" readonly=\"readonly\" rows=\"3\">"+data[i].content+"</div>\n" +
-                    "        </div>\n" +
-                    "<hr>\n" +
-                    "      ")
+                        $(".comments").append("<div class=\"comment\">\n" +
+                            "  <a class=\"avatar\">\n" +
+                            "    <i class=\"icon-user icon-2x\"></i>\n" +
+                            "  </a>\n" +
+                            "  <div class=\"content\">\n" +
+                            "    <div class=\"pull-right text-muted\">"+data[i].time+"</div>\n" +
+                            "    <div><a href=\"###\"><strong>"+data[i].reader+"</strong></a> <span class=\"text-muted\">评论</span></div>\n" +
+                            "    <div class=\"text\">"+data[i].content+"</div>")
                     }
 
                 }
@@ -204,8 +218,9 @@ $(".btn_liked").click(function () {
     $("#send_btn").click(function () {
         var cont = $("#send_content").val();
         var user = inputusername();
-        $.ajax({
-            type: "PUT",
+        alert(cont+user)
+    $.ajax({
+            type: "GET",
             url: "http://127.0.0.1:5000/addComment",
             data: {aid: article_id1,reader:user,content:cont},
             success: function (data) {
