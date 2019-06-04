@@ -28,6 +28,7 @@
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <img style="width:150px; height: auto;float: left" src="{{ url_for('static',filename='image/logo.png') }}" />
             <ul class="nav navbar-nav">
                 <li class="active">
                     <a href="{{ url_for('main') }}">Home <span class="sr-only">(current)</span></a>
@@ -58,6 +59,7 @@
     </div><!-- /.container-fluid -->
 </nav>
 <div class="main">
+md
     {% block main %}{% endblock %}
 </div>
 
